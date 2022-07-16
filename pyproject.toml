@@ -8,6 +8,8 @@ authors = ["Your Name <you@example.com>"]
 python = "^3.8"
 spacy = "^3.4.0"
 en_core_web_sm = { url = "https://github.com/explosion/spacy-models/releases/download/en_core_web_sm-3.4.0/en_core_web_sm-3.4.0.tar.gz" }
+fastapi = "^0.79.0"
+uvicorn = "^0.18.2"
 
 [tool.poetry.dev-dependencies]
 
