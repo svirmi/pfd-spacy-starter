@@ -7,3 +7,8 @@ $HOME/.poetry/bin/poetry shell
 ```
 
 Swagger http://127.0.0.1:8000/docs
+
+```bash
+docker build -t pfd-spacy-starter .
+docker run -d -p 8888:8888 pfd-spacy-starter
+```
