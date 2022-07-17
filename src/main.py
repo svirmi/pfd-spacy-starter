@@ -13,6 +13,16 @@ class Payload(BaseModel):
     data: List[Content]
 
 
+class SingleEntity(BaseModel):
+    text: str
+    entity_type: str
+
+
+class Entities(BaseModel):
+    post_url: str
+    entities: List[SingleEntity]
+
+
 app = FastAPI()
 nlp = spacy.load("en_core_web_sm")
 
@@ -24,7 +34,5 @@ async def get_ner(payload: Payload):
     ]
     document_entities = []
     for doc in tokenize_content:
-        x = [{'text': ent.text, 'entity_type': ent.label_} for ent in doc.ents]
-        print(x)
-        document_entities.append(x)
+        document_entities.append([{'text': ent.text, 'entity_type': ent.label_} for ent in doc.ents])
     return document_entities
