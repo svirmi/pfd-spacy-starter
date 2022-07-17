@@ -35,4 +35,7 @@ async def get_ner(payload: Payload):
     document_entities = []
     for doc in tokenize_content:
         document_entities.append([{'text': ent.text, 'entity_type': ent.label_} for ent in doc.ents])
-    return document_entities
+    return [
+        Entities(post_url=post.post_url, entities=ents)
+        for post, ents in zip(payload.data, document_entities)
+    ]
